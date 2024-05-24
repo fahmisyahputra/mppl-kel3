@@ -53,3 +53,20 @@ def bfs(graph, start, goal):
             else:
                 queue.append((next, path + [next], distance + (graph[vertex][next] * 10)))  # Multiply distance by 10
     return None, None
+
+# DFS implementation
+def dfs(graph, start, goal, path=[], distance=0):
+    path = path + [start]
+    if start == goal:
+        return path, distance
+    for node in graph[start]:
+        if node not in path:
+            newpath, newdistance = dfs(graph, node, goal, path, distance + (graph[start][node] * 10))  # Multiply distance by 10
+            if newpath:
+                return newpath, newdistance
+    return None, None
+
+# Route to render the index page
+@app.route('/')
+def index():
+    return render_template('main.html')
