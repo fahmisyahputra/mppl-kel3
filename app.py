@@ -76,11 +76,11 @@ def search_route():
     algorithm = request.form.get('algorithm')
 
     if start not in city_map and goal not in city_map:
-        return jsonify({'result': f'{start} and {goal} cities are invalid.', 'status': 'error'})
+        return jsonify({'result': f' Start and goal city is invalid (Start: {start} and Goal: {goal})', 'status': 'error'})
     elif start not in city_map:
-        return jsonify({'result': f'{start} city is invalid.', 'status': 'error'})
+        return jsonify({'result': f'Start city is invalid ({start})', 'status': 'error'})
     elif goal not in city_map:
-        return jsonify({'result': f'{goal} city is invalid.', 'status': 'error'})
+        return jsonify({'result': f'Goal city is invalid ({goal})', 'status': 'error'})
 
     path = None
     total_distance = 0
