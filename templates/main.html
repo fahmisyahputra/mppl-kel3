@@ -193,6 +193,25 @@
                                 <p>In summary, BFS and DFS offer different strengths: BFS excels at finding the shortest path and level-based exploration, while DFS is more memory-efficient and suited for deep path exploration and problems requiring complete traversal of all nodes or paths. Understanding these differences helps in choosing the appropriate algorithm based on the specific requirements of the problem at hand.</p>
                             </div>
                         </div>
+                        <h5 class="card-title mt-3 align-middle">Input Data</h5>
+                        <form id="routeForm" action="/search_route" method="post" class="mb-3">
+                            <div class="mb-3">
+                                <label for="kotaAsal" class="form-label">Start City (Ex: Surabaya):</label>
+                                <input type="text" class="form-control" id="kotaAsal" name="start" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kotaTujuan" class="form-label">Goal City (Ex: Malang):</label>
+                                <input type="text" class="form-control" id="kotaTujuan" name="goal" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="algorithm" class="form-label">Algorithm:</label>
+                                <select class="form-control" id="algorithm" name="algorithm" required>
+                                    <option value="BFS">BFS</option>
+                                    <option value="DFS">DFS</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
