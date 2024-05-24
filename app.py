@@ -70,3 +70,44 @@ def dfs(graph, start, goal, path=[], distance=0):
 @app.route('/')
 def index():
     return render_template('main.html')
+
+# Route to handle the form submission and perform selected algorithm search
+@app.route('/search_route', methods=['POST'])
+def search_route():
+    start = request.form.get('start').upper()
+    goal = request.form.get('goal').upper()
+    algorithm = request.form.get('algorithm')
+
+    if start not in city_map and goal not in city_map:
+        return jsonify({'result': f'{start} and {goal} cities are invalid.', 'status': 'error'})
+    elif start not in city_map:
+        return jsonify({'result': f'{start} city is invalid.', 'status': 'error'})
+    elif goal not in city_map:
+        return jsonify({'result': f'{goal} city is invalid.', 'status': 'error'})
+
+    path = None
+    total_distance = 0
+
+    if algorithm == 'BFS':
+        path, total_distance = bfs(city_map, start, goal)
+    elif algorithm == 'DFS':
+        path, total_distance = dfs(city_map, start, goal)
+
+    if path:
+        route_str = ' -> '.join(path)
+        distance_str = ''
+        prev_city = None
+        for city in path:
+            if prev_city:
+                distance = city_map[prev_city][city] * 10
+                distance_str += f"\n{prev_city} -> {city} = {distance} km"
+            prev_city = city
+
+        result = f"Route Found with {algorithm} method:<br><br> {route_str}<br><br>Distance between Each City:<br>{distance_str.replace('\n', '<br>')}<br><br>Total Distance: {total_distance} km"
+    else:
+        result = "Route not found!"
+
+    return jsonify({'result': result})
+
+if __name__ == '__main__':
+    app.run(debug=True)
