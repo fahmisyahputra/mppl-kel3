@@ -5,3 +5,16 @@
     text-align: center;
     background-color: #ffffff;
 }
+
+.navbar-brand {
+    font-size: clamp(15pt, 10vw, 18pt);
+}
+
+.nav-link.active {
+    font-weight: 700;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
