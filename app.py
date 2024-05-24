@@ -81,6 +81,8 @@ def search_route():
         return jsonify({'result': f'Start city is invalid ({start})', 'status': 'error'})
     elif goal not in city_map:
         return jsonify({'result': f'Goal city is invalid ({goal})', 'status': 'error'})
+    elif start == goal:
+        return jsonify({'result': f'Start and goal city cannot be the same ({start})', 'status': 'error'})
 
     path = None
     total_distance = 0
