@@ -32,3 +32,9 @@ python app.py
 5. After running the python code, fellas can simply go to the link given by flask (127.0.0.1:5000).
 
 ![terminal](https://media.discordapp.net/attachments/916254669771276288/1243441966989971467/image.png?ex=66517d12&is=66502b92&hm=e82976d26a807230b2a9afff6e5049800d1d035313ced6287e28f7b247d8df33&=&format=webp&quality=lossless)
+
+
+
+Another alternative to test the program is to visit this link below
+
+http://ivanfahmiobi.pythonanywhere.com/
