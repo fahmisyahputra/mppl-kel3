@@ -66,7 +66,7 @@ def dfs(graph, start, goal, path=[], distance=0):
 # Route to render the index page
 @app.route('/')
 def index():
-    return render_template('main.html')
+    return render_template('index.html')
 
 # Route to handle the form submission and perform selected algorithm search
 @app.route('/search_route', methods=['POST'])
@@ -99,10 +99,15 @@ def search_route():
         for city in path:
             if prev_city:
                 distance = city_map[prev_city][city] * 10
-                distance_str += f"\n{prev_city} -> {city} = {distance} km"
+                distance_str += f"{prev_city} -> {city} = {distance} km\n"
             prev_city = city
 
-        result = f"Route Found with {algorithm} method:<br><br> {route_str}<br><br>Distance between Each City:<br>{distance_str.replace('\n', '<br>')}<br><br>Total Distance: {total_distance} km"
+        distance_str = distance_str.replace('\n', '<br>')
+        result = (
+            f"Route Found with {algorithm} method:<br><br>{route_str}<br><br>"
+            f"Distance between Each City:<br>{distance_str}<br><br>"
+            f"Total Distance: {total_distance} km"
+        )
     else:
         result = "Route not found!"
 

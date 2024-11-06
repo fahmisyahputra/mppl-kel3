@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             const toastEl = document.getElementById('routeToast');
             const toastBody = document.getElementById('result-container');
-            
+
             toastBody.innerHTML = data.result;
 
             if (data.status === 'error') {
